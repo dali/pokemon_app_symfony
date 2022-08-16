@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PokemonController!{% endblock %}
+
+{% block body %}
+    <h1>Welocome to pokemon page</h1>
+
+<div class="container">
+        <form class="row g-3" action="{{ path('pokemon_filter') }}" method="post">
+        <div class="col-2">
+                <select name="type" class="form-select" aria-label="Default select example">
+                <option selected>--All type-- </option>
+                    {% for type in types %}
+                        <option  value="{{ type.id}}">{{ type.english}}</option>
+                    {% endfor %}
+                </select>
+         </div>
+        <div class="col-2">
+            <button class="btn btn-sm btn-success" type="submit"> Appliquer</button>
+        </div>
+        
+    </form>
+    <form class="row g-3" action="{{ path('pokemon_compare') }}" method="post">
+        <div class="col-2">
+                <select name="first_pokemon" class="form-select" aria-label="Default select example">
+                <option selected>--First pokemon-- </option>
+                    {% for pokemon in pokemons %}
+                        <option  value="{{ pokemon.id}}">{{ pokemon.english}}</option>
+                    {% endfor %}
+                </select>
+               
+         </div>
+                 <div class="col-2">
+               
+                <select name="second_pokemon" class="form-select" aria-label="Default select example">
+                <option selected>--Second pokemon-- </option>
+                    {% for pokemon in pokemons %}
+                        <option  value="{{ pokemon.id}}">{{ pokemon.english}}</option>
+                    {% endfor %}
+                </select>
+         </div>
+        <div class="col-2">
+            <button class="btn btn-sm btn-success" type="submit"> Compare</button>
+        </div>
+        
+    </form>
+    <div>
+
+    </div>
+</div>
+<table class="table">
+
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col"> Name</th>
+      <th scope="col">Types</th>
+      <th scope="col">Total</th>
+      <th scope="col">HP</th>
+      <th scope="col">Attack</th>
+      <th scope="col">Defense</th>
+      <th scope="col">Sp. Atk</th>
+      <th scope="col">Sp. Def</th>
+      <th scope="col">Speed</th>
+    </tr>
+  </thead>
+  <tbody>
+     {% for pokemon in pokemons %}
+        <tr>
+                <td>{{ pokemon.id }}</td>  
+                <td>
+                <a href="{{ path('pokemon_show', {id: pokemon.id}) }}">
+                 {{ pokemon.english }}
+                </a>
+                </td> 
+                <td> 
+                    {% for type in pokemon.types %}
+                        <a href="">{{ type.english }} </a>   <br>
+                    {% endfor %}
+                </td> 
+                <td> {{ pokemon.stats.total }} </td>
+                <td> {{ pokemon.stats.hp }} </td>
+                <td> {{ pokemon.stats.attack }} </td>
+                <td> {{ pokemon.stats.defence }} </td>
+                <td> {{ pokemon.stats.spAtk }} </td>
+                <td> {{ pokemon.stats.spDef }} </td>
+                <td> {{ pokemon.stats.speed }} </td>
+                
+                    
+        </tr>           
+        {% endfor %}
+
+  </tbody>
+</table>
+
+
+{% endblock %}

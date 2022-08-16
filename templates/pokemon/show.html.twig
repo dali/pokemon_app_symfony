@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PokemonController!{% endblock %}
+
+{% block body %}
+    <h1>Welocome to pokemon single page</h1>
+
+                <table class="table">
+
+                            <tbody>
+                                <tr><th scope="col">Num</th> <td>{{ pokemon.id }}</td>  </tr> 
+                                <tr><th scope="col"> Name</th> <td>{{ pokemon.english }}</td> </tr> 
+                                <tr><th scope="col">Types</th>
+                                        <td> 
+                                            {% for type in pokemon.types %}
+                                                {{ type.english }} <br>  
+                                            {% endfor %}
+                                        </td> 
+                                </tr> 
+                                <tr> <th scope="col">HP</th> <td>{{ pokemon.stats.hp }}</td></tr> 
+                                    <tr> <th scope="col">Attack</th>    <td> {{ pokemon.stats.attack }} </td> </tr> 
+                                    <tr> <th scope="col">Defense</th>  <td> {{ pokemon.stats.defence }} </td></tr> 
+                                    <tr> <th scope="col">Sp. Atk</th> <td> {{ pokemon.stats.spAtk }} </td> </tr> 
+                                    <tr> <th scope="col">Sp. Def</th>  <td> {{ pokemon.stats.spDef }} </td> </tr>
+                                    <tr>  <th scope="col">Speed</th> <td> {{ pokemon.stats.speed }} </td> </tr> 
+                                    <tr> <th scope="col">Total</th> <td> {{ pokemon.stats.total }} </td></tr>    
+               
+
+                            </tbody>
+                </table>
+
+
+{% endblock %}
