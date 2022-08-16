@@ -7,6 +7,7 @@ Installation
 
 
 First, clone this repository:
+
 $ git clone git@github.com:dali/pokemon_app_symfony.git
 
 
