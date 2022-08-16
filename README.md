@@ -10,6 +10,9 @@ First, clone this repository:
 
 $ git clone git@github.com:dali/pokemon_app_symfony.git
 
+navigate to the porject directory
+
+cd pokemon_app_symfony
 
 Make sure you adjust the sqlite database in .env file
 
